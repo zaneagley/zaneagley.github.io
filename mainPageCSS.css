@@ -1,3 +1,69 @@
-body {
+html, body {
     font-family: AppleGothic;
+    background: linear-gradient(to top, lightsteelblue, ghostwhite) no-repeat;
+    height: 100%;
+}
+
+.nav-links {
+    background-color: ghostwhite;
+    border: 1px solid black;
+    font-size: 1em;
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    display: block;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.nav-links a:hover{
+    opacity: 0.8;
+    background-color: lightsteelblue;
+}
+
+.about_section {
+    background-color: cornflowerblue;
+    margin-top: 100px;
+    height: 400px;
+}
+
+.carousel_text {
+    text-shadow: 5px 5px 20px black;
+
+}
+
+.about_section_content {
+    position: relative;
+    top: 133px;
+}
+
+
+
+@media (min-width: 768px) {
+
+    .mid_size_carousel {
+        max-height: 700px;
+    }
+
+    .img_carousel {
+        height: 700px;
+    }
+
+
+    .nav-links li a {
+        padding: 2em;
+        background: inherit;
+        display: inline-block;
+        margin: 0;
+    }
+
+    .nav-links li {
+        display: inline-block;
+    }
+
+
 }
