@@ -41,6 +41,12 @@ html, body {
     top: 133px;
 }
 
+#aboutCanvas {
+    height: 300px;
+    width: 100%;
+    background-color: black;
+}
+
 
 
 @media (min-width: 768px) {

@@ -6,6 +6,102 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.5/paper-full.js"></script>
+    <script type="text/paperscript" canvas="aboutCanvas">
+
+
+        //
+        // var text = new PointText(10, 100);
+        // text.fontSize = 100;
+        // text.fillColor = 'white';
+        // // Set the content of the text item:
+        // text.content = 'About me';
+
+        var circles = [];
+        function onKeyDown(event) {
+            var maxPoint = new Point(view.size.width, view.size.height);
+            var randomPoint = Point.random();
+            var point = maxPoint * randomPoint;
+            var newCircle = new Path.Circle(point, 25);
+            newCircle.fillColor = "orange";
+            circles.push(newCircle);
+        }
+
+
+        // function onFrame(event){
+        //     var maxPoint = new Point(view.size.width, view.size.height);
+        //     var randomPoint = Point.random();
+        //     var point = maxPoint * randomPoint;
+        //     var newCircle = new Path.Circle(point, 10);
+        //     newCircle.fillColor = "blue";
+        //     circles.push(newCircle);
+        //
+        //
+        // }
+
+
+
+        var count = 500;
+
+        // Create a symbol, which we will use to place instances of later:
+        var path = new Path.Circle({
+            center: [0, 0],
+            radius: 1,
+            fillColor: 'white',
+            strokeColor: 'white'
+        });
+
+        var symbol = new Symbol(path);
+
+        // Place the instances of the symbol:
+        for (var i = 0; i < count; i++) {
+            // The center position is a random point in the view:
+            var center = Point.random() * view.size;
+            var placedSymbol = symbol.place(center);
+            placedSymbol.scale(i / count);
+        }
+
+        // The onFrame function is called up to 60 times a second:
+        function onFrame(event) {
+            // Run through the active layer's children list and change
+            // the position of the placed symbols:
+            path.fillColor.hue += 1;
+            for (var i = 0; i <circles.length; i++){
+                circles[i].fillColor.hue += 1;
+                circles[i].scale(.9);
+                if(circles[i].area < 1){
+                    circles[i].remove();
+                    circles.splice(i, 1);
+                    i--;
+                    console.log(circles);
+                }
+            }
+            for (var i = 0; i < count; i++) {
+                var item = project.activeLayer.children[i];
+
+                // Move the item 1/20th of its width to the right. This way
+                // larger circles move faster than smaller circles:
+                item.position.x += item.bounds.width / 20;
+                item.position.y += item.bounds.height / 5;
+
+                // If the item has left the view on the right, move it back
+                // to the left:
+                if (item.bounds.left > view.size.width) {
+                    item.position.x = -item.bounds.width;
+                }
+                if (item.bounds.bottom > view.size.height) {
+                    item.position.y = -item.bounds.height;
+                }
+
+            }
+        }
+
+
+
+
+    </script>
+
+
     <link rel="stylesheet" href="mainPageCSS.css">
     <title>Hello World</title>
 </head>
@@ -49,6 +145,7 @@
 
                 <h3 id="about">About</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aperiam asperiores autem deleniti distinctio doloremque eligendi harum id illum, laborum natus nobis numquam officiis pariatur perspiciatis saepe suscipit tempore.</p>
+            <canvas id="aboutCanvas" resize></canvas>
             </div>
 
             <div class="col-1">
