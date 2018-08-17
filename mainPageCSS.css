@@ -5,30 +5,138 @@ html, body {
 }
 
 .nav-links {
-    background-color: ghostwhite;
+    position: relative;
+    background: linear-gradient(to bottom, #0004ff, black);
     border: 1px solid black;
-    font-size: 1em;
+    color: yellow;
+    font-size: 1.4rem;
     text-align: center;
     list-style-type: none;
     padding: 0;
     margin: 0;
+
 }
 
 .nav-links a {
+    position: relative;
     display: block;
+    color: yellow;
     text-align: center;
     padding: 15px 0;
+
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
 }
 
 .nav-links a:hover{
     opacity: 0.8;
-    background-color: lightsteelblue;
+    background: linear-gradient(to bottom, rgba(40, 230, 255, 0.7), rgba(0, 0, 0, 0.9));
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
 }
 
+.nav-links a:active {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+}
+
+.nav-links a::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.nav-links a::after {
+     background-color: transparent;
+ }
+
+.nav-links a:hover::after {
+     transform: scaleX(1.4) scaleY(1.6);
+     background-color: white;
+     opacity: 0;
+ }
+
+
+.header-section {
+    width: 100%;
+    position: absolute;
+    color: white;
+    background: rgba(111, 231, 255, 0.5);
+    box-shadow: 0 0 3rem rgba(111, 231, 255,.9);
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+}
+
+.header-section h1 {
+    display: inline-block;
+    background-image: linear-gradient(to bottom, rgba(185, 180, 7, 0.8), rgba(255, 234, 0, 0.61));
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: white 0 0 4rem;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 2rem;
+}
+
+
+.header-section p {
+    display: inline-block;
+    background-image: linear-gradient(to top, rgb(244, 254, 253), rgb(0, 144, 150));
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 2rem;
+    font-weight: 400;
+
+}
+
+
+.header-section h1:hover {
+    transform: scale(1.1);
+    transition: all .1s;
+
+}
+
+
+
 .about_section {
-    background-color: cornflowerblue;
-    margin-top: 100px;
-    height: 400px;
+    top: 60rem;
+    width: 100%;
+    position: absolute;
+    color: white;
+    background: rgba(88, 255, 170, 0.5);
+    box-shadow: 0 0 3rem rgba(88, 255, 170,.9);
+    animation-name: moveInRight;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+}
+
+.about_section h2 {
+    padding-left: 2rem;
+    text-align: center;
+    display: inline-block;
+    background-image: linear-gradient(to right, rgb(0, 23, 255), rgb(255, 0, 9));
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: white 0 0 10rem;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 1.4rem;
+}
+
+.about-text {
+    padding-left: 2rem;
+    font-size: 2rem;
+    background-image: linear-gradient(to right, rgb(0, 255, 219), rgb(66, 236, 255));
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .carousel_text {
@@ -36,13 +144,9 @@ html, body {
 
 }
 
-.about_section_content {
-    position: relative;
-    top: 133px;
-}
 
 #aboutCanvas {
-    height: 300px;
+    height: 150vh;
     width: 100%;
     background-color: black;
 }
@@ -50,6 +154,71 @@ html, body {
 
 
 @media (min-width: 768px) {
+
+
+
+    .header-section {
+        width: 75%;
+        top: 10rem;
+        position: absolute;
+        color: white;
+        background: rgba(111, 231, 255, 0.5);
+        box-shadow: 0 0 3rem rgba(111, 231, 255,.9);
+        border-bottom-right-radius: 75%;
+        border-top-right-radius: 75%;
+        animation-name: moveInLeft;
+        animation-duration: 2s;
+        animation-timing-function: ease-out;
+    }
+
+
+    .nav-links {
+        background: linear-gradient(to bottom, white, black);
+    }
+
+    .nav-links a:hover{
+        opacity: 0.8;
+        border-radius: 50%;
+        background: linear-gradient(to bottom, rgba(40, 230, 255, 0.7), rgba(0, 0, 0, 0.9));
+        color: white;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .about_section {
+        top: 60rem;
+        width: 50%;
+        position: absolute;
+        color: white;
+        background: rgba(88, 255, 170, 0.5);
+        animation-name: moveInRight;
+        animation-duration: 2s;
+        animation-timing-function: ease-out;
+    }
+
+
+    .about_section h2 {
+        padding-left: 2rem;
+        text-align: left;
+        display: inline-block;
+        background-image: linear-gradient(to right, rgb(0, 23, 255), rgb(255, 0, 9));
+        -webkit-background-clip: text;
+        color: transparent;
+        text-shadow: white 0 0 4rem;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 1.4rem;
+    }
+
+    .about-text {
+        padding-left: 1rem;
+        font-size: 2rem;
+        background-image: linear-gradient(to right, rgb(0, 255, 219), rgb(66, 236, 255));
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+
 
     .mid_size_carousel {
         max-height: 700px;
@@ -68,6 +237,62 @@ html, body {
 
     .nav-links li {
         display: inline-block;
+    }
+
+
+}
+
+
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translate(-10rem);
+    }
+
+
+    80% {
+        transform: translate(1rem);
+    }
+
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translate(10rem);
+    }
+
+    80% {
+        transform: translate(-1rem);
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+
+    }
+
+
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+
     }
 
 
