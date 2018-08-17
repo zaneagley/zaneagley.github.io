@@ -84,6 +84,7 @@ html, body {
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 2rem;
+    transition: all .5s;
 }
 
 
@@ -100,7 +101,8 @@ html, body {
 
 .header-section h1:hover {
     transform: scale(1.1);
-    transition: all .1s;
+    transition: all .5s;
+
 
 }
 
@@ -139,10 +141,7 @@ html, body {
     color: transparent;
 }
 
-.carousel_text {
-    text-shadow: 5px 5px 20px black;
 
-}
 
 
 #aboutCanvas {
@@ -151,6 +150,51 @@ html, body {
     background-color: black;
 }
 
+
+.skills_section {
+    position: relative;
+    box-shadow: 0 0 10rem teal;
+    height: 10rem;
+    width: 102%;
+    background: linear-gradient(to right, teal, skyblue);
+}
+
+.skills_section h2 {
+
+
+
+}
+
+/*.skills_section h2:hover {*/
+    /*background-image: linear-gradient(to bottom, rgb(255, 4, 0), rgb(245, 245, 255));*/
+    /*transition: all 1s;*/
+    /*text-shadow: black 0 1rem 2rem;*/
+/*}*/
+
+.skills_section-spin {
+    display: inline-block;
+    background-image: linear-gradient(to bottom, rgb(255, 4, 0), rgb(245, 245, 255));
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: black 0 0 2rem;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 2rem;
+    transition: all .5s;
+}
+
+.skills_section-spin:hover {
+    background-image: linear-gradient(to bottom, rgb(246, 255, 244), rgb(3, 7, 255));
+    transform: rotate(360deg);
+    transition: all 1s;
+}
+
+
+
+.carousel_text {
+    text-shadow: 5px 5px 20px black;
+
+}
 
 
 @media (min-width: 768px) {
@@ -190,6 +234,7 @@ html, body {
         width: 50%;
         position: absolute;
         color: white;
+        border-radius: 10%;
         background: rgba(88, 255, 170, 0.5);
         animation-name: moveInRight;
         animation-duration: 2s;
